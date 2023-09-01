@@ -1,3 +1,7 @@
 {
+  "compilerOptions": {
+    "jsx": "react"
+  },
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "astro/tsconfigs/strict"
 }
