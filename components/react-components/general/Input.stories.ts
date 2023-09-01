@@ -13,9 +13,12 @@ export default {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {},
+  argTypes: {
+    intent: { control: "select", options: ["input", "static"] },
+  },
   args: {
     placeholder: "Placeholder",
+    intent: "input",
   },
 } as Meta<typeof Component>;
 
@@ -23,8 +26,19 @@ export default {
 export const Primary: Story = {
   args: {},
 };
+export const Compact: Story = {
+  args: {
+    size: "compact",
+  },
+};
 export const WithIcon: Story = {
   args: {
     icon: "magnifying-glass",
+  },
+};
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    value: "Disabled",
   },
 };

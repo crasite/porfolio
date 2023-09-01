@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --gray: 0 0% 90%;
+  --text: 10 0% 1%;
+  --text-lighten: 0 0% 40%;
+  --text-darken: 0 0% 90%;
+  --text-light: 0 0% 100%;
+  --background: 0 0% 100%;
+  --primary: 0 94% 32%;
+  --primary-darken: 0, 94%, 17%;
+  --danger: 0 100% 40%;
+  --success: 112 56% 52%;
+  --warning: 41 100% 47%;
+}
