@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/react/Card.tsx';
+import {Button} from "react-components"
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="text-xl text-red-400">
-    <p class="text-green-300">Hi</p>
+  <main class="text-xl text-blue-400">
+    <p class="text-red-300">Hi</p>
     <Card client:visible/>
+    <Button>sdfs</Button>
   </main>
 </Layout>

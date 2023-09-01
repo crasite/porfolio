@@ -6,6 +6,11 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [
     tailwind(),
-    react({ include: ["./src/components/react/**/*.tsx"] }),
+    react({
+      include: [
+        "./src/components/react/**/*.tsx",
+        "**/react-components/**/*.tsx",
+      ],
+    }),
   ],
 });
