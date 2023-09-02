@@ -28,6 +28,11 @@ export const Alert: Story = {
     name: "alert",
   },
 };
+export const Funnel: Story = {
+  args: {
+    name: "funnel",
+  },
+};
 export const Bin: Story = {
   args: {
     name: "bin",
@@ -36,6 +41,11 @@ export const Bin: Story = {
 export const ChevronDown: Story = {
   args: {
     name: "chevron-down",
+  },
+};
+export const ChevronUp: Story = {
+  args: {
+    name: "chevron-up",
   },
 };
 export const MagnifyingGlass: Story = {
