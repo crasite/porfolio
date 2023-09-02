@@ -36,8 +36,9 @@ export type Props = {
   className?: string;
   icon?: IconProps["name"];
   disabled?: boolean;
-} & Omit<HTMLProps<HTMLInputElement>, "size"> &
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> &
   VariantProps<typeof InputBlock>;
+
 export default forwardRef<HTMLInputElement, Props>(
   function Component(props, ref) {
     const inputClass = InputBlock({

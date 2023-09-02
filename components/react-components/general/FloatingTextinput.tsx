@@ -48,5 +48,5 @@ export type Props = {
   type?: "text" | "password";
   placeholder?: string;
   labelBg?: string;
-} & HTMLProps<HTMLInputElement> &
+} & React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof variants>;

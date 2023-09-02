@@ -41,4 +41,4 @@ const style = cva(null, {
 
 type Props = {
   options: { name: string; value: string }[];
-} & React.HTMLAttributes<HTMLInputElement>;
+} & React.InputHTMLAttributes<HTMLInputElement>;
