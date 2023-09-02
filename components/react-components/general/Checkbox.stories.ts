@@ -11,7 +11,13 @@ export default {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {},
+  argTypes: {
+    onChange: { action: "onChange" },
+  },
+  args: {
+    label: "Checkbox",
+    id: "cb",
+  },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
