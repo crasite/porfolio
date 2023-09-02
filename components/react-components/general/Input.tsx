@@ -55,7 +55,7 @@ export default forwardRef<HTMLInputElement, Props>(
           type="text"
           {...rest}
           size={undefined}
-          className={`outline-none ${icon ? "pl-7" : ""}`}
+          className={`w-full outline-none ${icon ? "pl-7" : ""}`}
           ref={ref}
         />
       </div>
