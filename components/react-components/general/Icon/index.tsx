@@ -14,6 +14,7 @@ export type Props = {
     | "magnifying-glass";
   className?: string;
 } & HTMLProps<SVGSVGElement>;
+
 export default forwardRef<SVGSVGElement, Props>((props, ref) => {
   const { className, ...rest } = props;
   switch (props.name) {
