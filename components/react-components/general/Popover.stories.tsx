@@ -16,7 +16,12 @@ export default {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {},
+  argTypes: {
+    position: {
+      control: "select",
+      options: ["left", "right", "center"],
+    },
+  },
   args: {
     name: "Container",
     children: (
@@ -86,6 +91,31 @@ export const WithOther = {
           <Input placeholder="Other" onChange={action("Input")} />
         </Component.Other>
       </>
+    ),
+  },
+};
+
+export const CustomPositioning: Story = {
+  parameters: {
+    layout: "centered",
+  },
+  args: {
+    position: "center",
+    children: (
+      <div className="w-[20vw]">
+        <Component.Group
+          label="Group 1"
+          options={[
+            { label: "Opt 1", value: "A1", id: "optA1" },
+            { label: "Opt 2", value: "A2", id: "optA2" },
+            { label: "Opt 3", value: "A3", id: "optA3" },
+          ]}
+          onChange={action("onChange")}
+        />
+        <Component.Other className="p-2">
+          <Input placeholder="Other" onChange={action("Input")} />
+        </Component.Other>
+      </div>
     ),
   },
 };

@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Checkbox from "./Checkbox";
 import Button from "./Button";
 import { cn, useOutsideAlerter } from "../utils";
+import { cva, VariantProps } from "class-variance-authority";
 import Icon from "./Icon";
 
 function Popover(props: Props) {
@@ -37,7 +38,7 @@ function Popover(props: Props) {
         )}
       </Button>
       {open && (
-        <div className="border-gray bg-background absolute top-[calc(100%+0.5rem)] z-10 flex flex-col rounded-lg border">
+        <div className={cn(PopoverStyles({ position: props.position }))}>
           {props.children}
         </div>
       )}
@@ -90,6 +91,22 @@ function Other({ children, className, ...rest }: OtherProps) {
   );
 }
 
+const PopoverStyles = cva(
+  "border-gray bg-background absolute top-[calc(100%+0.5rem)] z-10 flex flex-col rounded-lg border",
+  {
+    variants: {
+      position: {
+        right: "left-0",
+        left: "right-0",
+        center: "left-1/2 -translate-x-1/2 transform",
+      },
+    },
+    defaultVariants: {
+      position: "right",
+    },
+  },
+);
+
 export type GroupProps<T> = {
   label?: string;
   options: {
@@ -111,5 +128,5 @@ export type Props = {
   open?: boolean;
   label?: React.ReactNode;
   onToggle?: (isOpen: boolean) => void;
-};
+} & VariantProps<typeof PopoverStyles>;
 export default Object.assign(Popover, { Group, Other });
