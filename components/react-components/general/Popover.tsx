@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Checkbox from "./Checkbox";
 import Button from "./Button";
-import { cn } from "../utils";
+import { cn, useOutsideAlerter } from "../utils";
 import Icon from "./Icon";
 
 function Popover(props: Props) {
   const [_open, setOpen] = useState(props.open || false);
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef, () => {
+    setOpen(false);
+  });
   const open = props.open ?? _open;
   const displayChevron = props.displayChevron ?? true;
   const label = props.label || (
@@ -22,36 +26,21 @@ function Popover(props: Props) {
     }
   }
   return (
-    <div>
-      <div className="relative">
-        <Button onClick={toggle} className="flex w-fit items-center px-1">
-          {label}
-          {displayChevron && (
-            <Icon
-              name={open ? "chevron-up" : "chevron-down"}
-              className="h-3 w-3"
-            />
-          )}
-        </Button>
-        {open && (
-          <div className="border-gray bg-background absolute top-[calc(100%+0.5rem)] z-10 flex flex-col rounded-lg border">
-            {props.children}
-          </div>
+    <div className="relative" ref={wrapperRef}>
+      <Button onClick={toggle} className="flex w-fit items-center px-1">
+        {label}
+        {displayChevron && (
+          <Icon
+            name={open ? "chevron-up" : "chevron-down"}
+            className="h-3 w-3"
+          />
         )}
-      </div>
-      <p>
-        Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit
-        enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
-        exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
-        nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor
-        minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure
-        elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor
-        Lorem duis laboris cupidatat officia voluptate. Culpa proident
-        adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod.
-        Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
-        Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa
-        et culpa duis.
-      </p>
+      </Button>
+      {open && (
+        <div className="border-gray bg-background absolute top-[calc(100%+0.5rem)] z-10 flex flex-col rounded-lg border">
+          {props.children}
+        </div>
+      )}
     </div>
   );
 }
@@ -67,6 +56,7 @@ function Group<T>(props: GroupProps<T>) {
       )}
       {props.options.map((option) => (
         <Checkbox
+          key={option.label}
           label={option.label}
           className="px-2"
           id={option.id}
