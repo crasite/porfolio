@@ -6,6 +6,9 @@ export type Props = {
     | "bin"
     | "chevron-down"
     | "chevron-up"
+    | "chevron-left"
+    | "chevron-right"
+    | "calendar"
     | "alert"
     | "user"
     | "close"
@@ -147,6 +150,44 @@ export default forwardRef<SVGSVGElement, Props>((props, ref) => {
           />
         </svg>
       );
+    case "chevron-left":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className={cn("h-6 w-6", props.className)}
+          ref={ref}
+          {...rest}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+      );
+    case "chevron-right":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className={cn("h-6 w-6", props.className)}
+          ref={ref}
+          {...rest}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      );
     case "magnifying-glass":
       return (
         <svg
@@ -163,6 +204,25 @@ export default forwardRef<SVGSVGElement, Props>((props, ref) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+          />
+        </svg>
+      );
+    case "calendar":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className={cn("h-6 w-6", props.className)}
+          {...rest}
+          ref={ref}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
           />
         </svg>
       );

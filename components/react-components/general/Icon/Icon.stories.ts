@@ -48,6 +48,21 @@ export const ChevronUp: Story = {
     name: "chevron-up",
   },
 };
+export const ChevronLeft: Story = {
+  args: {
+    name: "chevron-left",
+  },
+};
+export const ChevronRight: Story = {
+  args: {
+    name: "chevron-right",
+  },
+};
+export const Calendar: Story = {
+  args: {
+    name: "calendar",
+  },
+};
 export const MagnifyingGlass: Story = {
   args: {
     name: "magnifying-glass",
