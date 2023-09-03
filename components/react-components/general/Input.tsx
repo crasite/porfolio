@@ -1,8 +1,7 @@
-import React from "react";
+import React, { forwardRef, type InputHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 import Icon, { Props as IconProps } from "./Icon";
-import { forwardRef, HTMLProps } from "react";
 
 const InputBlock = cva(null, {
   variants: {
@@ -36,7 +35,7 @@ export type Props = {
   className?: string;
   icon?: IconProps["name"];
   disabled?: boolean;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> &
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "size"> &
   VariantProps<typeof InputBlock>;
 
 export default forwardRef<HTMLInputElement, Props>(
