@@ -16,6 +16,7 @@ export default function Component({
 
   const handleDaySelect = (date: Date | undefined) => {
     if (!time || !date) {
+      (props as any).onSelect?.(date);
       setDate(date);
       return;
     }
@@ -112,6 +113,8 @@ function TimePicker({
     const time = e.target.value;
     if (!selected) {
       setTimeValue(time);
+      setTime(time);
+      setSelected(selected);
       return;
     }
     const [hours, minutes] = time.split(":").map((str) => parseInt(str, 10));
