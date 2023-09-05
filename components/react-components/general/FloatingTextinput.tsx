@@ -19,10 +19,7 @@ export default forwardRef<HTMLInputElement, Props>(function (
         {...props}
         placeholder=" "
       />
-      <label
-        htmlFor={props.id}
-        className={cn(variants({ floatOff }), props.labelBg)}
-      >
+      <label htmlFor={props.id} className={cn(variants({ floatOff }))}>
         {props.placeholder}
       </label>
     </div>
@@ -30,7 +27,7 @@ export default forwardRef<HTMLInputElement, Props>(function (
 });
 
 const variants = cva(
-  "text-text/40 peer-hover:text-text/60 peer-focus:text-accent-600 absolute left-1 top-2 z-10 origin-[0] scale-75 transform  cursor-text bg-transparent px-2 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1 peer-focus:-translate-y-4 peer-focus:scale-75",
+  "text-text/40 peer-hover:text-text/60 peer-focus:text-accent-600 absolute left-1 top-2 z-10 origin-[0] scale-75 transform cursor-text  rounded-md bg-transparent px-2 backdrop-blur-sm duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1 peer-focus:-translate-y-4 peer-focus:scale-75",
   {
     variants: {
       floatOff: {
@@ -47,6 +44,5 @@ const variants = cva(
 export type Props = {
   type?: "text" | "password";
   placeholder?: string;
-  labelBg?: string;
 } & React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof variants>;
