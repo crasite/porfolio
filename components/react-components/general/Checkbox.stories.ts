@@ -16,7 +16,6 @@ export default {
   },
   args: {
     label: "Checkbox",
-    id: "cb",
   },
 };
 
