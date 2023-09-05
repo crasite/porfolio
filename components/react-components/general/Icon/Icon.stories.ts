@@ -63,6 +63,11 @@ export const Calendar: Story = {
     name: "calendar",
   },
 };
+export const Checkmark: Story = {
+  args: {
+    name: "checkmark",
+  },
+};
 export const MagnifyingGlass: Story = {
   args: {
     name: "magnifying-glass",
