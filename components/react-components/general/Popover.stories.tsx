@@ -21,6 +21,10 @@ export default {
       control: "select",
       options: ["left", "right", "center"],
     },
+    open: {
+      control: "select",
+      options: [true, false, undefined],
+    },
   },
   args: {
     name: "Container",
@@ -28,9 +32,9 @@ export default {
       <>
         <Component.Group
           options={[
-            { label: "Opt 1", value: "1", id: "opt1" },
-            { label: "Opt 2", value: "2", id: "opt2" },
-            { label: "Opt 3", value: "3", id: "opt3" },
+            { label: "Opt 1", value: "1" },
+            { label: "Opt 2", value: "2" },
+            { label: "Opt 3", value: "3" },
           ]}
           onChange={action("onChange")}
           value={["1"]}
@@ -38,18 +42,18 @@ export default {
         <Component.Group
           label="Group 1"
           options={[
-            { label: "Opt 1", value: "A1", id: "optA1" },
-            { label: "Opt 2", value: "A2", id: "optA2" },
-            { label: "Opt 3", value: "A3", id: "optA3" },
+            { label: "Opt 1", value: "A1" },
+            { label: "Opt 2", value: "A2" },
+            { label: "Opt 3", value: "A3" },
           ]}
           onChange={action("onChange")}
         />
         <Component.Group
           label="Group 2"
           options={[
-            { label: "Opt 1", value: "B1", id: "optB1" },
-            { label: "Opt 2", value: "B2", id: "optB2" },
-            { label: "Opt 3", value: "B3", id: "optB3" },
+            { label: "Opt 1", value: "B1" },
+            { label: "Opt 2", value: "B2" },
+            { label: "Opt 3", value: "B3" },
           ]}
           onChange={action("onChange")}
         />

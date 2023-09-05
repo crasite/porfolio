@@ -8,10 +8,11 @@ import Icon from "./Icon";
 function Popover(props: Props) {
   const [_open, setOpen] = useState(props.open || false);
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, () => {
-    setOpen(false);
-  });
   const open = props.open ?? _open;
+  useOutsideAlerter(wrapperRef, () => {
+    if (open) toggle();
+  });
+  console.log(props.open, _open, open);
   const displayChevron = props.displayChevron ?? true;
   const label = props.label || (
     <div className="inline-flex items-center pr-2">
@@ -20,7 +21,7 @@ function Popover(props: Props) {
     </div>
   );
   function toggle() {
-    if (props.open || props.onToggle) {
+    if (props.onToggle && props.open !== undefined) {
       props.onToggle?.(!open);
     } else {
       setOpen((v) => !v);
@@ -38,7 +39,12 @@ function Popover(props: Props) {
         )}
       </Button>
       {open && (
-        <div className={cn(PopoverStyles({ position: props.position }))}>
+        <div
+          className={cn(
+            PopoverStyles({ position: props.position }),
+            props.popoverClassName,
+          )}
+        >
           {props.children}
         </div>
       )}
@@ -57,10 +63,9 @@ function Group<T>(props: GroupProps<T>) {
       )}
       {props.options.map((option) => (
         <Checkbox
-          key={option.label}
+          key={option.id ?? option.label}
           label={option.label}
           className="px-2"
-          id={option.id}
           onChange={(e) => {
             setValue((prev) => {
               if (e.target.checked) {
@@ -127,6 +132,7 @@ export type Props = {
   children?: React.ReactNode;
   open?: boolean;
   label?: React.ReactNode;
+  popoverClassName?: string;
   onToggle?: (isOpen: boolean) => void;
 } & VariantProps<typeof PopoverStyles>;
 export default Object.assign(Popover, { Group, Other });
