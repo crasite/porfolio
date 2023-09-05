@@ -4,16 +4,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 import { cn } from "../utils";
 
-export interface Props
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    ButtonVariantProps {
-  className?: string;
-  text?: string;
-  icon?: IconProps["name"];
-}
-
 export default forwardRef<HTMLButtonElement, Props>(function Component(
-  props: Props,
+  { buttonStyle, className, intent, text, children, ...props }: Props,
   ref,
 ) {
   const ButtonIcon = props.icon ? (
@@ -22,37 +14,78 @@ export default forwardRef<HTMLButtonElement, Props>(function Component(
     <></>
   );
   const buttonClass = buttonCVA({
-    intent: props.intent,
-    className: props.className,
+    intent: intent,
+    buttonStyle: buttonStyle,
+    className: className,
   });
   return (
-    <button
-      {...(props as any)}
-      type="button"
-      className={cn(buttonClass)}
-      ref={ref}
-    >
+    <button {...props} type="button" className={cn(buttonClass)} ref={ref}>
       {ButtonIcon}
-      {props.text}
-      {props.children}
+      {text}
+      {children}
     </button>
   );
 });
 const buttonCVA = cva(
-  "text-text inline-flex w-full justify-center rounded-md px-4 py-1",
+  "text-text inline-flex w-full justify-center rounded-md px-4 py-1 transition-colors",
   {
     variants: {
       intent: {
-        primary: "bg-primary hover:bg-primary/80 text-white",
-        success: "bg-success hover:bg-success/80 text-white",
-        danger: "bg-danger hover:bg-danger/80 text-white",
-        transparent:
-          "hover:border-gray border border-transparent bg-transparent text-black",
+        primary: null,
+        success: null,
+        danger: null,
+      },
+      buttonStyle: {
+        solid: null,
+        outline: "border",
+        ghost:
+          "hover:border-gray hover:bg-gray/10 border border-transparent bg-transparent text-black",
       },
     },
+    compoundVariants: [
+      {
+        intent: "primary",
+        buttonStyle: "solid",
+        class: "bg-primary hover:bg-primary/80 text-white",
+      },
+      {
+        intent: "success",
+        buttonStyle: "solid",
+        class: "bg-success hover:bg-success/80 text-white",
+      },
+      {
+        intent: "danger",
+        buttonStyle: "solid",
+        class: "bg-danger hover:bg-danger/80 text-white",
+      },
+      {
+        intent: "primary",
+        buttonStyle: "outline",
+        class: "border-primary hover:bg-primary/10",
+      },
+      {
+        intent: "success",
+        buttonStyle: "outline",
+        class: "border-success hover:bg-success/10",
+      },
+      {
+        intent: "danger",
+        buttonStyle: "outline",
+        class: "border-danger hover:bg-danger/10",
+      },
+    ],
     defaultVariants: {
       intent: "primary",
+      buttonStyle: "solid",
     },
   },
 );
+
 type ButtonVariantProps = VariantProps<typeof buttonCVA>;
+
+export type Props = {
+  className?: string;
+  text?: string;
+  icon?: IconProps["name"];
+} & ButtonVariantProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
